@@ -8,17 +8,17 @@
         <div class="form-group">
             <label class="text-gray-500" for="exampleInputEmail1">Employee name</label>
             <br>
-            <input type="text" required minlength="6" class="form-control" value="{{ $employee->name }}" placeholder="Name" name="name">
+            <input type="text" class="form-control" value="{{ $employee->name }}" placeholder="Name" name="name">
         </div>
         <div class="form-group">
             <label class="text-gray-500" for="exampleInputEmail1">Employee surname</label>
             <br>
-            <input type="text" required minlength="6" class="form-control" value="{{ $employee->surname }}" placeholder="Surname" name="surname">
+            <input type="text" class="form-control" value="{{ $employee->surname }}" placeholder="Surname" name="surname">
         </div>
         <div class="form-group">
             <label class="text-gray-500" for="exampleInputEmail1">Employee position</label>
             <br>
-            <input type="text" required minlength="6" class="form-control" value="{{ $employee->position }}" placeholder="Position" name="position">
+            <input type="text" class="form-control" value="{{ $employee->position }}" placeholder="Position" name="position">
         </div>
         <div class="form-group">
             <label class="text-gray-500" for="exampleInputEmail1">Employee phone</label>
@@ -35,5 +35,16 @@
     <div class="box-footer">
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 </form>
 @endsection

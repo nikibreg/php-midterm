@@ -71,6 +71,14 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'surname' => 'required|min:5|max:255',
+            'position' => 'required|min:5|max:255',
+            'phone' => 'required|min:9|max:255',
+            'is_hired' => 'nullable',
+        ]);
+        
         $employee = Employee::findOrFail($id);
         $employee->name = $request->name;
         $employee->surname = $request->surname;
