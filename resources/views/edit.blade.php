@@ -1,6 +1,9 @@
 @extends('home')
 @section('main-section')
-<form method="post" enctype="multipart/form-data" action="{{route('employees.edit', $employee->id)}}">
+<form method="post" enctype="multipart/form-data" action="{{route('employees.update', $employee->id)}}">
+    {{ csrf_field() }}
+    {{ method_field('put') }}
+
     <div class="box-body">
         <div class="form-group">
             <label class="text-gray-500" for="exampleInputEmail1">Employee name</label>
@@ -25,7 +28,7 @@
         <div class="form-group">
             <label class="text-gray-500" for="exampleInputEmail1">Is hired</label>
             <br>
-            <input type="checkbox" required checked="{{ $employee->is_hired }}" class="form-control" value="{{ $employee->is_hired }}" name="is_hired">
+            <input type="checkbox" {{ $employee->is_hired ? 'checked="checked"' : '' }} class="form-control" value="{{ $employee->is_hired }}" name="is_hired">
         </div>
     </div>
     <input type="hidden" name="_token" id='csrf_toKen' value="{{ csrf_toKen() }}">
